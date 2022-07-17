@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "colors": "^1.4.0",
+    "yargs": "^17.5.1"
+  },
+  "name": "seccion-04",
+  "version": "1.0.0",
+  "description": "Es una simple tabla de multiplicar con archivo de text",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "base3": "node app.js --base3"
+  },
+  "author": "Mario",
+  "license": "MIT"
+}
