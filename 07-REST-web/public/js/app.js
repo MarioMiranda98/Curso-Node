@@ -1,1 +1,1 @@
-console.log("mario");
+console.log('mario');
