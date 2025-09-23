@@ -7,3 +7,4 @@ export * from './usecases/todos/update-todo.ts';
 export * from './usecases/todos/get-todo.ts';
 export * from './usecases/todos/get-todos.ts';
 export * from './usecases/todos/delete-todo.ts';
+export * from './errors/custom.errors.ts';

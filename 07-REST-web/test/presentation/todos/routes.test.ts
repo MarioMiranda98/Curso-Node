@@ -120,7 +120,7 @@ describe('Testing en las rutas de Rodos', async () => {
     const todoId = 999;
     await prisma.todo.createMany({ data: [todo1, todo2] });
 
-    const { body } = await request(testServer.app).put(`/api/todos/${todoId}`).send({}).expect(400);
+    const { body } = await request(testServer.app).put(`/api/todos/${todoId}`).send({}).expect(404);
 
     expect(body).toEqual({ error: `Todo with id: ${todoId} not found` });
   });
@@ -158,7 +158,7 @@ describe('Testing en las rutas de Rodos', async () => {
 
   test("Should return a 404 if todo to delete does not exist", async () => {
     const todoId = 999;
-    const { body } = await request(testServer.app).delete(`/api/todos/${todoId}`).expect(400);
+    const { body } = await request(testServer.app).delete(`/api/todos/${todoId}`).expect(404);
 
     expect(body).toEqual({ error: `Todo with id: ${todoId} not found` });
   });

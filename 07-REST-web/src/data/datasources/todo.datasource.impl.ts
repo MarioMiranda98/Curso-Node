@@ -3,6 +3,7 @@ import {
   type CreateTodoDto,
   type TodoDatasource,
   type UpdateTodoDto,
+  CustomErrors
 } from '../../domain/index.ts';
 import { prisma } from '../postgres/index.ts';
 
@@ -31,7 +32,7 @@ export class TodoDatasourceImpl implements TodoDatasource {
       },
     });
 
-    if (!todo) throw 'Todo not found';
+    if (!todo) throw new CustomErrors(`Todo with id: ${id} not found`, 404);
 
     const te: TodoEntity = TodoEntity.fromObject(todo);
 
