@@ -1,0 +1,7 @@
+.env
+node_modules/
+/mongo
+/postgres
+dist/
+build/
+coverage/
