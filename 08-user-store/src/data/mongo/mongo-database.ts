@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import moongose from 'mongoose';
 
 interface ConnectionOptions {
   mongoUrl: string;
@@ -16,5 +17,9 @@ export class MongoDatabase {
     } catch (error) {
       throw error;
     }
+  }
+
+  static async disconnect() {
+    await moongose.disconnect();
   }
 }

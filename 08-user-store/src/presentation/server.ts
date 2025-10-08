@@ -1,4 +1,5 @@
 import express, { Router } from 'express';
+import bodyParser from 'body-parser';
 import path from 'path';
 
 interface Options {
@@ -22,14 +23,16 @@ export class Server {
   }
 
   async start() {
-    this.app.use(express.json()); // raw
+    this.app.use(express.json()); // application/json
     this.app.use(express.urlencoded({ extended: true })); // x-www-form-urlencoded
+    this.app.use(bodyParser.json()); // raw
+    this.app.use(bodyParser.urlencoded({ extended: true })); // x-www-form-urlencoded
 
     this.app.use(express.static(this.publicPath));
 
     this.app.use(this.routes);
 
-    this.app.get('*name', (req, res) => {
+    this.app.get('*name', (_req, res) => {
       const indexPath = path.join(__dirname + `../../../${this.publicPath}/index.html`);
       res.sendFile(indexPath);
     });
