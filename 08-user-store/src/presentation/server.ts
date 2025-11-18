@@ -1,6 +1,7 @@
 import express, { Router } from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
+import fileUpload from 'express-fileupload';
 
 interface Options {
   port: number;
@@ -27,6 +28,9 @@ export class Server {
     this.app.use(express.urlencoded({ extended: true })); // x-www-form-urlencoded
     this.app.use(bodyParser.json()); // raw
     this.app.use(bodyParser.urlencoded({ extended: true })); // x-www-form-urlencoded
+    this.app.use(fileUpload({
+      limits: { fileSize: 50 * 1024 * 1024 }
+    }));
 
     this.app.use(express.static(this.publicPath));
 
